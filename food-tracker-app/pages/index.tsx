@@ -4,6 +4,7 @@ import FoodList from '../components/FoodList';
 import FoodForm from '../components/FoodForm';
 import DatePicker from '../components/DatePicker';
 import WeeklyCaloriesChart from '../components/WeeklyCaloriesChart';
+import CalorieCalculator from '../components/CalorieCalculator';
 import styles from '../styles/Home.module.css';
 
 const Home: React.FC = () => {
@@ -11,23 +12,22 @@ const Home: React.FC = () => {
 
     return (
         <FoodProvider>
-            <main className={styles.main}>
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', width: '100%' }}>
-                    <div style={{ position: 'absolute', left: 100, width: '400px', height: '700px' }}>  {/* Increased width and height */}
-                        <WeeklyCaloriesChart />
-                    </div>
-                    <div className={styles.content}>
-                        <h1 className={styles.title}>Food Tracker App</h1>
-                        <DatePicker selectedDate={selectedDate} onChange={setSelectedDate} />
-                        <FoodForm selectedDate={selectedDate} onCancel={() => {}} />
-                        <FoodList selectedDate={selectedDate} />
-                    </div>
+            <div className={styles.container}>
+                <div className={styles.chartContainer}>
+                    <WeeklyCaloriesChart />
                 </div>
-            </main>
+                <div className={styles.trackerContainer}>
+                    <h1 className={styles.title}>Food Tracker App</h1>
+                    <DatePicker selectedDate={selectedDate} onChange={setSelectedDate} />
+                    <FoodForm selectedDate={selectedDate} onCancel={() => {}} />
+                    <FoodList selectedDate={selectedDate} />
+                </div>
+                <div className={styles.calorieCalculatorContainer}>
+                    <CalorieCalculator />
+                </div>
+            </div>
         </FoodProvider>
     );
 };
 
 export default Home;
-
-
